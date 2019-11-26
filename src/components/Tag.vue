@@ -65,11 +65,13 @@ export default {
       this.win = false;
       this.timer = setInterval(this.updateTime, 1000);
 
+      // Перемешиваем плитки
       for (let i = this.tagItems.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
         [this.tagItems[i], this.tagItems[j]] = [this.tagItems[j], this.tagItems[i]];
       }
 
+      // Проверяем стартовую раскладку на решаемость
       let countPos = 0;
       for(let i = 14; i > 0; i--) {
         for(let j = i - 1; j >= 0; j-- ) {
@@ -98,6 +100,8 @@ export default {
         this.tagItems[index].x = freeX;
         this.steps++;
       }
+
+      // Проверка правильного решения
       if(this.freeCoord.x == 3 && this.freeCoord.y == 3) {
         let itemIdx = 0;
 
